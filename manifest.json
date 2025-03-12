@@ -1,0 +1,35 @@
+{
+	"$schema": "https://json.schemastore.org/chrome-manifest.json",
+	"manifest_version": 3,
+	"name": "Chrome Extensions Template",
+	"description": "Chrome extension template",
+	"version": "0.0.0",
+	"action": {
+		"default_icon": {
+			"16": "favicon.png",
+			"24": "favicon.png",
+			"32": "favicon.png"
+		},
+		"default_popup": "popup.html"
+	},
+	"options_page": "options.html",
+	"icons": {
+		"16": "favicon.png",
+		"48": "favicon.png",
+		"128": "favicon.png",
+		"256": "favicon.png"
+	},
+	"content_scripts": [
+		{
+			"run_at": "document_end",
+			"matches": ["<all_urls>"],
+			"js": ["scripts/content.js"],
+			"world": "MAIN"
+		}
+	],
+	"background": {
+		"service_worker": "scripts/background.js"
+	},
+	"host_permissions": ["https://*/*", "http://*/*"],
+	"permissions": ["scripting", "tabs"]
+}
